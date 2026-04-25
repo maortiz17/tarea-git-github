@@ -2,6 +2,7 @@ package dao;
 
 import java.util.List;
 
+import entities.LineaTicket;
 import entities.Ticket;
 
 public interface InterfazTicketDAO {
@@ -14,4 +15,7 @@ public interface InterfazTicketDAO {
 	
 	void delete(int id);
 	
+	void addLineas(int ticketId, List<LineaTicket> lineas);	
+		
+	void cerrarTicket(int ticketId);
 }

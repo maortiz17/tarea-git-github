@@ -165,5 +165,54 @@ public class TicketDAO implements InterfazTicketDAO{
 			throw new RuntimeException(e);
 		}	
 	}
+	
+	
+	/**
+	 * Método para añadir lineas un ticket existente
+	 * @param ID del ticket
+	 * @param lsita de objetos de la clase {@link LineaTicket}
+	 */
+	@Override
+	public void addLineas(int ticketId, List<LineaTicket> lineas) {
+
+	    String sql = "INSERT INTO LINEATICKET (CANTIDAD, PRECIOVENTA, PRODUCTO_ID, TICKET_ID) VALUES (?, ?, ?, ?)";
+
+	    try (Connection con = ConexionDB.getConnection();
+	         PreparedStatement ps = con.prepareStatement(sql)) {
+
+	        for (LineaTicket linea : lineas) {
+	        	ps.setInt(1, linea.getCantidad());
+	        	ps.setDouble(2, linea.getPrecioVenta());
+	        	ps.setInt(3, linea.getProducto().getId());
+	        	ps.setInt(4, ticketId);
+
+	        	ps.executeUpdate();
+	        }
+
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    }
+	}
+	
+	
+	/**
+	 * Método para cerrar un ticket
+	 * @param ID del ticket
+	 */
+	@Override
+	public void cerrarTicket(int ticketId) {
+
+	    String sql = "UPDATE TICKET SET TICKETCERRADO = 'T' WHERE ID = ?";
+
+	    try (Connection con = ConexionDB.getConnection();
+	         PreparedStatement pstmt = con.prepareStatement(sql)) {
+
+	        pstmt.setInt(1, ticketId);
+	        pstmt.executeUpdate();
+
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    }
+	}
 
 }
