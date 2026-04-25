@@ -16,6 +16,7 @@ public class ProductoDAO implements InterfazProductoDAO{
 	 * Método para listar todos los productos de la BD
 	 * @return lista con todos los productos 
 	 */
+	@Override
 	public List<Producto> getAll() {
 		
 		List<Producto> productos = new ArrayList<>();
@@ -53,6 +54,7 @@ public class ProductoDAO implements InterfazProductoDAO{
 	 * Método para buscar un producto por su ID
 	 * @return producto basado en una ID
 	 */
+	@Override
 	public Producto getById(int id) {	
 		
 		Producto p = new Producto();
@@ -88,6 +90,7 @@ public class ProductoDAO implements InterfazProductoDAO{
 	/**
 	 * Método para insertar un nuevo prodcuto en la tabla Producto de la BD
 	 */
+	@Override
 	public void insert(Producto p) {
 		
 		String sql = """
@@ -116,6 +119,7 @@ public class ProductoDAO implements InterfazProductoDAO{
 	 * Método para eliminar un producto de la tabla Producto de la BD mediante su ID
 	 * @param ID del producto
 	 */
+	@Override
 	public void delete (int id) {
 		
 		String sql = """
