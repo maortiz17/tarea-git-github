@@ -208,6 +208,8 @@ public class Main {
 	
 	/**
 	 * Método para consultar un ticket y advertir si no está cerrado
+	 * @param objeto de la clase {@link TicketDAO}
+	 * @param objeto de la clase {@link LineaTicketDAO}
 	 */
 	public static void consultarTicket(TicketDAO tDAO, LineaTicketDAO ltDAO) {
 		
@@ -247,4 +249,30 @@ public class Main {
 	    System.out.println("\nTotal: " + precioFinal);
 	}
 	
+	
+	/**
+	 * Método para borrar un ticket identificado por su ID. Sólo si está cerrado
+	 * @param objeto de la clase {@return TicketDAO}
+	 */
+	public static void devolverCompra(TicketDAO tDAO) {
+		
+		System.out.println("ID del ticket: ");
+		int id = sc.nextInt();
+		
+		//obtener ticket
+		Ticket t = tDAO.getById(id);
+		
+		if (t==null) {
+			System.out.println("Ticket no encontrado");
+	        return;
+		}
+		
+		if (t.isTicketCerrado()) {
+			tDAO.delete(id);
+		} else {
+			System.out.println("No se puede borrar el ticket hasta estar cerrado.");
+		}
+		
+		System.out.println("Ticket borrado correctamente");
+	}
 }
