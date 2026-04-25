@@ -52,6 +52,7 @@ public class ProductoDAO implements InterfazProductoDAO{
 	
 	/**
 	 * Método para buscar un producto por su ID
+	 * @param ID del producto
 	 * @return producto basado en una ID
 	 */
 	@Override
@@ -89,6 +90,7 @@ public class ProductoDAO implements InterfazProductoDAO{
 	
 	/**
 	 * Método para insertar un nuevo prodcuto en la tabla Producto de la BD
+	 * @param objeto de la clase {@link Producto}
 	 */
 	@Override
 	public void insert(Producto p) {

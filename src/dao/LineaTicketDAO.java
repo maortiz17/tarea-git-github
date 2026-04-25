@@ -15,6 +15,7 @@ public class LineaTicketDAO implements InterfazLineaTicketDAO{
 
 	/**
 	 * Método para insertar una linea de ticket en la tabla LineaTicket de la BD
+	 * @param objeto de la clase {@link LineaTicket}
 	 */
 	@Override
 	public void insert(LineaTicket linea) {
